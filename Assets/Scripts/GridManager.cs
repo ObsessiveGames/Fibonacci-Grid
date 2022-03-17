@@ -104,8 +104,7 @@ public class GridManager : MonoBehaviour
         int i = 0;
         int leftOneSeperator = 1, rightOneSeperator = 1, upOneSeperator = 1, downOneSeperator = 1;
         bool leftInSequence = true, rightInSequence = true, upInSequence = true, downInSequence = true ;
-
-        // These checks will not make sure that the value is the next term, but it will make sure that it is a higher consecutive number.
+        bool term0 = false, term1 = false, term2 = false;
 
         while (i < 4)
         {
@@ -203,6 +202,36 @@ public class GridManager : MonoBehaviour
         {
             if (leftInSequence)
             {
+                // Initial check for first 3 terms.
+                for (int j = 0; j < 5; j++)
+                {
+                    switch (Grid[col - j, row].value)
+                    {
+                        case 0:
+                            term0 = true;
+                            break;
+                        case 1:
+                            if (term1 == true) { term2 = true; }
+                            term1 = true;
+                            break;
+                        case 2:
+                            if (term0 && term1 && term2)
+                            {
+                                break;
+                            }
+                            else if (term1 && term2 || term1 && j == 1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                leftInSequence = false;
+                                return;
+                            }
+                    }
+                }
+
+                // Clear and color change.
                 for (int j = 0; j < 5; j++)
                 {
                     StartCoroutine(Grid[col - j, row].ChangeColorGreen());
@@ -211,6 +240,36 @@ public class GridManager : MonoBehaviour
 
             if (rightInSequence)
             {
+                // Initial check for first 3 terms.
+                for (int j = 0; j < 5; j++)
+                {
+                    switch (Grid[col + j, row].value)
+                    {
+                        case 0:
+                            term0 = true;
+                            break;
+                        case 1:
+                            if (term1 == true) { term2 = true; }
+                            term1 = true;
+                            break;
+                        case 2:
+                            if (term0 && term1 && term2)
+                            {
+                                break;
+                            }
+                            else if (term1 && term2 || term1 && j == 1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                rightInSequence = false;
+                                return;
+                            }
+                    }
+                }
+
+                // Clear and color change.
                 for (int j = 0; j < 5; j++)
                 {
                     StartCoroutine(Grid[col + j, row].ChangeColorGreen());
@@ -219,6 +278,36 @@ public class GridManager : MonoBehaviour
 
             if (upInSequence)
             {
+                // Initial check for first 3 terms.
+                for (int j = 0; j < 5; j++)
+                {
+                    switch (Grid[col, row + j].value)
+                    {
+                        case 0:
+                            term0 = true;
+                            break;
+                        case 1:
+                            if (term1 == true) { term2 = true; }
+                            term1 = true;
+                            break;
+                        case 2:
+                            if (term0 && term1 && term2)
+                            {
+                                break;
+                            }
+                            else if (term1 && term2 || term1 && j == 1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                upInSequence = false;
+                                return;
+                            }
+                    }
+                }
+
+                // Clear and color change.
                 for (int j = 0; j < 5; j++)
                 {
                     StartCoroutine(Grid[col, row + j].ChangeColorGreen());
@@ -227,6 +316,36 @@ public class GridManager : MonoBehaviour
 
             if (downInSequence)
             {
+                // Initial check for first 3 terms.
+                for (int j = 0; j < 5; j++)
+                {
+                    switch (Grid[col, row - j].value)
+                    {
+                        case 0:
+                            term0 = true;
+                            break;
+                        case 1:
+                            if (term1 == true) { term2 = true; }
+                            term1 = true;
+                            break;
+                        case 2:
+                            if (term0 && term1 && term2)
+                            {
+                                break;
+                            }
+                            else if (term1 && term2 || term1 && j == 1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                downInSequence = false;
+                                return;
+                            }
+                    }
+                }
+
+                // Clear and color change.
                 for (int j = 0; j < 5; j++)
                 {
                     StartCoroutine(Grid[col, row - j].ChangeColorGreen());
