@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db5fbae64630d54098215847d5a6a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Columns: 10
-  Rows: 10
+  Columns: 50
+  Rows: 50
 --- !u!1 &1651168200
 GameObject:
   m_ObjectHideFlags: 0
